@@ -29,3 +29,9 @@ export async function config({ user, email }: { user: string; email: string }) {
 export async function push() {
   return await $`git push origin HEAD`;
 }
+
+export async function sample() {
+  Deno.writeTextFileSync("sample.txt", "Hello, World!");
+  await $`git add sample.txt`;
+  await $`git commit -m "Add sample.txt"`;
+}
