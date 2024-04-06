@@ -1,0 +1,12 @@
+name: deno sample
+
+on:
+  - push
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v1
+      - run: deno run -A mod.ts
