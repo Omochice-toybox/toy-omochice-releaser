@@ -1,4 +1,4 @@
-import { config, getCurrentBranch, rebase, switchBranch } from "./git.ts";
+import { config, getCurrentBranch, push, rebase, switchBranch } from "./git.ts";
 
 const branchPrefix = "Omochice-releaser-";
 
@@ -13,4 +13,5 @@ if (import.meta.main) {
   });
   await switchBranch(`${branchPrefix}-sample`);
   await rebase("main");
+  await push();
 }
