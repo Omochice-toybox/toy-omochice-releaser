@@ -26,8 +26,8 @@ export async function config({ user, email }: { user: string; email: string }) {
   await $`git config user.email ${email}`;
 }
 
-export async function push() {
-  return await $`git push origin HEAD`;
+export async function push(force = false) {
+  return await $`git push origin HEAD ${force ? "--force" : ""}`;
 }
 
 export async function sample() {

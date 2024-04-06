@@ -21,5 +21,5 @@ if (import.meta.main) {
   await switchBranch(`${branchPrefix}-sample`);
   await rebase("main");
   await sample();
-  await push();
+  await push(true);
 }
