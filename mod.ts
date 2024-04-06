@@ -12,6 +12,7 @@ const branchPrefix = "Omochice-releaser-";
 if (import.meta.main) {
   // if current branch is not target branch then exit
   if (await getCurrentBranch() !== "main") {
+    console.log("This action is only for main branch.");
     Deno.exit(0);
   }
   await config({
