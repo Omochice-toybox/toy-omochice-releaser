@@ -110,10 +110,12 @@ func main() {
 				return err
 			}
 			fmt.Printf("origin: %v\n", origin)
-			r.Push(&git.PushOptions{
+			if err = r.Push(&git.PushOptions{
 				RemoteName: "origin",
 				Force:      true,
-			})
+			}); err != nil {
+				return err
+			}
 
 			// // get latest tag
 			// tags, err := r.Tags()
