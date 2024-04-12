@@ -129,7 +129,7 @@ func main() {
 			// 	return nil
 			// })
 			// fmt.Printf("boom! I say!: %v, %v, %v\n", isDryRun, withV, latestTag.Name().Short())
-			// return nil
+			return nil
 		},
 	}
 
