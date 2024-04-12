@@ -54,8 +54,8 @@ func main() {
 			// STEP: check crrent branch is Configure branch
 			// is not matched, exit(1 or 0)
 			branchName := ref.Name().Short()
-			if branchName != "go" {
-				return fmt.Errorf("current branch is not master")
+			if branchName != "main" {
+				return fmt.Errorf("current branch is not main")
 			}
 
 			// STEP: if repository is shallowed one, fetch unshallowly
