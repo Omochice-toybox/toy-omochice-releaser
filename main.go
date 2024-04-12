@@ -7,7 +7,6 @@ import (
 
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/config"
-	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/urfave/cli/v2" // imports as package "cli"
 )
 
@@ -111,22 +110,26 @@ func main() {
 				return err
 			}
 			fmt.Printf("origin: %v\n", origin)
-
-			// get latest tag
-			tags, err := r.Tags()
-			if err != nil {
-				return err
-			}
-
-			// chack if tag is from current branch
-			// tagNames = tags.map(r => tagNames.Name().Short())
-			latestTag := &plumbing.Reference{}
-			tags.ForEach(func(ref *plumbing.Reference) error {
-				latestTag = ref
-				return nil
+			r.Push(&git.PushOptions{
+				RemoteName: "origin",
+				Force:      true,
 			})
-			fmt.Printf("boom! I say!: %v, %v, %v\n", isDryRun, withV, latestTag.Name().Short())
-			return nil
+
+			// // get latest tag
+			// tags, err := r.Tags()
+			// if err != nil {
+			// 	return err
+			// }
+
+			// // chack if tag is from current branch
+			// // tagNames = tags.map(r => tagNames.Name().Short())
+			// latestTag := &plumbing.Reference{}
+			// tags.ForEach(func(ref *plumbing.Reference) error {
+			// 	latestTag = ref
+			// 	return nil
+			// })
+			// fmt.Printf("boom! I say!: %v, %v, %v\n", isDryRun, withV, latestTag.Name().Short())
+			// return nil
 		},
 	}
 
